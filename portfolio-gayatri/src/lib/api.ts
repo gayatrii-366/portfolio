@@ -75,5 +75,5 @@ export async function submitContact(
 
 /** Returns the resume URL to open in new tab */
 export function getResumeUrl(): string {
-  return `${API_URL}/api/resume`;
+  return `/api/resume`;
 }
