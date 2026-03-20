@@ -1,0 +1,104 @@
+{
+  "skills": {
+    "languages": ["C", "C++", "Python", "Java"],
+    "concepts": ["DSA", "OOPs", "DBMS", "OS", "CN"],
+    "backend": ["FastAPI", "Django"],
+    "database": ["MySQL"],
+    "ai_ml": ["NumPy", "Pandas", "Scikit-learn", "ML Models"],
+    "development": ["API Integration", "Authentication"],
+    "tools": ["Git", "GitHub", "Docker", "Postman", "Netlify"]
+  },
+  "projects": [
+    {
+      "title": "Fitz.ai",
+      "description": "AI-based fashion assistant that analyses skin tone and body structure to suggest suitable outfits. Aggregates insights from multiple e-commerce sources to deliver personalised recommendations.",
+      "tech": ["Python", "ML Models", "API Integration", "FastAPI"],
+      "github": "#",
+      "live": ""
+    },
+    {
+      "title": "BeatsWeb Player",
+      "description": "Web music player built to explore frontend systems and API integration. Uses Spotify API for dynamic music control within a responsive UI.",
+      "tech": ["JavaScript", "Spotify API", "HTML/CSS"],
+      "github": "#",
+      "live": ""
+    },
+    {
+      "title": "Air Draw",
+      "description": "Computer vision-based system that enables mid-air drawing using finger tracking. Includes neon stroke rendering, gesture controls, and FPS tracking for smooth interaction.",
+      "tech": ["Python", "OpenCV", "NumPy"],
+      "github": "#",
+      "live": ""
+    },
+    {
+      "title": "Study Timer",
+      "description": "Productivity tool implementing the Pomodoro technique to track focused sessions and improve time management.",
+      "tech": ["Python", "Tkinter"],
+      "github": "#",
+      "live": ""
+    },
+    {
+      "title": "Snake Game",
+      "description": "Classic snake game built purely with Python standard libraries, focusing on game logic, controls, and rendering.",
+      "tech": ["Python", "Pygame"],
+      "github": "#",
+      "live": ""
+    },
+    {
+      "title": "Tic Tac Toe",
+      "description": "Interactive browser-based game with clean game state handling, written using vanilla HTML, CSS, and JavaScript.",
+      "tech": ["HTML", "CSS", "JavaScript"],
+      "github": "#",
+      "live": ""
+    },
+    {
+      "title": "Underwater Debris Detection",
+      "description": "Ongoing — Underwater trash and debris detection pipeline using deep learning for environmental monitoring.",
+      "tech": ["Python", "YOLOv8", "OpenCV", "Deep Learning"],
+      "github": "#",
+      "live": "",
+      "ongoing": true
+    }
+  ],
+  "education": [
+    {
+      "school": "MIT-WPU, Pune",
+      "degree": "Integrated B.Tech — Artificial Intelligence & Deep Learning",
+      "detail": "Currently pursuing",
+      "year": "2023 – Present"
+    },
+    {
+      "school": "DAV Public School, Pune",
+      "degree": "10th Grade — CBSE",
+      "detail": "88%",
+      "year": "2022"
+    }
+  ],
+  "experience": [
+    {
+      "company": "MIT-WPU Institute of Artificial Intelligence",
+      "role": "R&D Intern",
+      "period": "Jun – Aug 2025",
+      "description": "Worked on applied AI/ML research and experimentation within the institute's research division. Contributed to model development, data pipelines, and experiment documentation."
+    }
+  ],
+  "volunteering": [
+    {
+      "event": "RIDE 2025 — MIT-WPU Entrepreneurial Summit",
+      "roles": [
+        "Creative Team — Props and Stage Setup",
+        "Registration Desk — Managed Participant Flow"
+      ]
+    }
+  ],
+  "beyond_coding": [
+    {
+      "title": "Calligraphy",
+      "level": "Elementary & Intermediate (A+ grades)"
+    },
+    {
+      "title": "Lettering",
+      "level": "Elementary & Intermediate (A+ grades)"
+    }
+  ]
+}
