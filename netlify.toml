@@ -1,0 +1,7 @@
+[build]
+  base = "portfolio-gayatri"
+  command = "npm run build"
+  # Let Netlify's Next.js plugin automatically handle the publish directory
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
