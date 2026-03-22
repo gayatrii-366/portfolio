@@ -3,7 +3,7 @@
 import { motion, Variants } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { getResumeUrl } from '@/lib/api';
+
 
 const useTypingEffect = (text: string, speed: number = 80) => {
   const [displayedText, setDisplayedText] = useState("");
@@ -85,7 +85,7 @@ export default function RightPanel() {
           className="flex flex-row gap-4 w-full"
         >
           <a
-            href={getResumeUrl()}
+            href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 bg-[var(--fg)] text-[var(--bg)] rounded-xl py-4 flex items-center justify-center font-sans font-medium tracking-wide hover:-translate-y-1 hover:shadow-lg hover:shadow-[var(--fg)]/10 transition-all duration-300 ease-out interactive"

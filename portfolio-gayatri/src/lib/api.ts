@@ -45,11 +45,7 @@ export interface PortfolioData {
   }[];
 }
 
-export interface ContactPayload {
-  name: string;
-  email: string;
-  message: string;
-}
+
 
 /** GET /api/portfolio */
 export async function fetchPortfolio(): Promise<PortfolioData> {
@@ -61,19 +57,3 @@ export async function fetchPortfolio(): Promise<PortfolioData> {
   return json.data as PortfolioData;
 }
 
-/** POST /api/contact */
-export async function submitContact(
-  payload: ContactPayload
-): Promise<{ success: boolean; message: string }> {
-  const res = await fetch(`${API_URL}/api/contact`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
-  return res.json();
-}
-
-/** Returns the resume URL to open in new tab */
-export function getResumeUrl(): string {
-  return `/api/resume`;
-}

@@ -8,7 +8,7 @@ import {
   BeyondCodingSection,
   Footer,
 } from "@/components/portfolio/sections";
-import ContactForm from "@/components/portfolio/contact-form";
+import MessageSection from "@/components/portfolio/message-section";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
@@ -37,8 +37,8 @@ export default function Portfolio() {
         <ExperienceSection />
         <VolunteeringSection />
         <BeyondCodingSection />
-        <div className="w-full max-w-7xl">
-          <ContactForm />
+        <div className="w-full flex justify-center py-12">
+          <MessageSection />
         </div>
       </div>
 
