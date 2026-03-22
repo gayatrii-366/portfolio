@@ -19,13 +19,6 @@ export default function LeftPanel() {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const [greeting, setGreeting] = useState("Hello 👋");
 
-  useEffect(() => {
-    const hour = new Date().getHours();
-    if (hour < 12) setGreeting("Good morning 🌅");
-    else if (hour < 18) setGreeting("Good afternoon ☀️");
-    else setGreeting("Good evening 🌙");
-  }, []);
-
   const handleCopy = (email: string, index: number) => {
     navigator.clipboard.writeText(email);
     setCopiedIndex(index);
