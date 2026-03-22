@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/ui/theme-provider';
-import { ThemeToggle } from '@/components/ui/theme-toggle';
+
 import { ScrollProgress } from '@/components/ui/scroll-progress';
 import { CustomCursor } from '@/components/ui/custom-cursor';
 
@@ -22,10 +22,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <ThemeProvider>
           <ScrollProgress />
           <CustomCursor />
-          {/* Global theme toggle — fixed top-right */}
-          <div className="fixed top-4 right-4 z-[9999]">
-            <ThemeToggle />
-          </div>
+
           {children}
         </ThemeProvider>
       </body>
