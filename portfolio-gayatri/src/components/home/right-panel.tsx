@@ -88,14 +88,14 @@ export default function RightPanel() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 bg-[var(--fg)] text-[var(--bg)] rounded-xl py-4 flex items-center justify-center font-sans font-medium tracking-wide hover:-translate-y-1 hover:shadow-lg hover:shadow-[var(--fg)]/10 transition-all duration-300 ease-out interactive"
+            className="flex-1 bg-[var(--accent)] text-white rounded-xl py-4 flex items-center justify-center font-sans font-medium tracking-wide hover:-translate-y-1 hover:bg-[var(--accent-hover)] hover:shadow-lg hover:shadow-[var(--accent)]/20 transition-all duration-300 ease-out interactive"
           >
             Resume
           </a>
 
           <Link
             href="/portfolio"
-            className="flex-1 bg-transparent text-[var(--fg)] border border-[var(--border)] rounded-xl py-4 flex items-center justify-center font-sans font-medium tracking-wide hover:bg-[var(--fg)] hover:text-[var(--bg)] hover:-translate-y-1 transition-all duration-300 ease-out interactive"
+            className="flex-1 bg-transparent text-[var(--fg)] border border-[var(--border)] rounded-xl py-4 flex items-center justify-center font-sans font-medium tracking-wide hover:bg-[var(--accent)] hover:text-white hover:border-[var(--accent)] hover:-translate-y-1 transition-all duration-300 ease-out interactive"
           >
             Portfolio
           </Link>

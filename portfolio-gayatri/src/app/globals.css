@@ -6,21 +6,25 @@
 }
 
 :root {
-  --bg: #fdfdfd;
-  --fg: #171717;
-  --bg-secondary: #fafafa;
-  --bg-panel: #f0f0f0;
-  --border: #e5e5e5;
-  --muted: #737373;
+  --bg: #0b0b0b;
+  --fg: #ffffff;
+  --bg-secondary: #111111;
+  --bg-panel: #111111;
+  --border: #1f1f1f;
+  --muted: #a1a1aa;
+  --accent: #e63946;
+  --accent-hover: #ff4d5a;
 }
 
 .dark {
-  --bg: #0a0a0a;
-  --fg: #ededed;
+  --bg: #0b0b0b;
+  --fg: #ffffff;
   --bg-secondary: #111111;
-  --bg-panel: #1a1a1a;
-  --border: #262626;
-  --muted: #a3a3a3;
+  --bg-panel: #111111;
+  --border: #1f1f1f;
+  --muted: #a1a1aa;
+  --accent: #e63946;
+  --accent-hover: #ff4d5a;
 }
 
 * {
@@ -46,4 +50,4 @@ body {
 /* Scrollbar */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 999px; }

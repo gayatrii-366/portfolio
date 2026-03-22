@@ -91,7 +91,7 @@ export default function LeftPanel() {
               e.stopPropagation();
               setShowEmailDropdown(!showEmailDropdown);
             }}
-            className="bg-[var(--fg)] text-[var(--bg)] px-9 py-3.5 rounded-xl text-sm font-medium tracking-wide shadow-lg transition-all shadow-[var(--fg)]/10 hover:shadow-[var(--fg)]/20 interactive"
+            className="bg-[var(--accent)] text-white px-9 py-3.5 rounded-xl text-sm font-medium tracking-wide shadow-lg transition-all shadow-[var(--accent)]/10 hover:bg-[var(--accent-hover)] hover:shadow-[var(--accent)]/20 interactive"
           >
             Email me
           </motion.button>
@@ -152,7 +152,7 @@ export default function LeftPanel() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.15, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="opacity-75 hover:opacity-100 hover:text-[var(--fg)] transition-all duration-300 interactive"
+              className="opacity-75 hover:opacity-100 hover:text-[var(--accent)] transition-all duration-300 interactive"
             >
               <Icon className="w-5 h-5 stroke-[1.5]" />
             </motion.a>

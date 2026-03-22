@@ -109,7 +109,7 @@ function SkillPill({ name, color }: { name: string; color: string }) {
       }}
       whileHover={{ scale: 1.08, y: -3 }}
       whileTap={{ scale: 0.96 }}
-      className="group relative flex items-center justify-center px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg)] cursor-default select-none overflow-visible shadow-[0_2px_8px_rgba(0,0,0,0.04)] interactive"
+      className="group relative flex items-center justify-center px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] cursor-default select-none overflow-visible shadow-[0_2px_8px_rgba(0,0,0,0.04)] interactive"
     >
       {/* Tooltip */}
       <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-[var(--fg)] text-[var(--bg)] text-[10px] font-mono rounded opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all pointer-events-none whitespace-nowrap shadow-lg z-50">
@@ -237,7 +237,7 @@ export function ProjectsSection() {
           <motion.div
             key={i}
             whileHover={{ y: -6 }}
-            className="group relative bg-[var(--bg)] border border-[var(--border)] rounded-2xl overflow-hidden flex flex-col hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300"
+            className="group relative bg-[var(--bg-secondary)] border border-[var(--border)] rounded-2xl overflow-hidden flex flex-col hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(230,57,70,0.1)] transition-all duration-300"
           >
             {/* Image thumbnail with hover overlay */}
             {proj.image && (
@@ -258,7 +258,7 @@ export function ProjectsSection() {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100 bg-white text-black p-3 rounded-full hover:scale-110 flex items-center justify-center shadow-2xl interactive"
+                        className="translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100 bg-[var(--accent)] text-white p-3 rounded-full hover:scale-110 hover:bg-[var(--accent-hover)] flex items-center justify-center shadow-2xl interactive"
                       >
                         <Github className="w-5 h-5" />
                       </a>
@@ -269,7 +269,7 @@ export function ProjectsSection() {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-150 bg-white text-black p-3 rounded-full hover:scale-110 flex items-center justify-center shadow-2xl interactive"
+                        className="translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-150 bg-[var(--accent)] text-white p-3 rounded-full hover:scale-110 hover:bg-[var(--accent-hover)] flex items-center justify-center shadow-2xl interactive"
                       >
                         <ExternalLink className="w-5 h-5" />
                       </a>
@@ -281,7 +281,7 @@ export function ProjectsSection() {
                 </div>
                 {/* Ongoing badge */}
                 {proj.ongoing && (
-                  <span className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-widest text-emerald-400 border border-emerald-400/40 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-full z-10 shadow-lg shadow-black/30">
+                  <span className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-widest text-[var(--accent)] border border-[var(--accent)]/40 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-full z-10 shadow-lg shadow-black/30">
                     Ongoing
                   </span>
                 )}
@@ -289,8 +289,8 @@ export function ProjectsSection() {
             )}
 
             {/* Card body */}
-            <div className="p-6 flex flex-col flex-1 bg-[var(--bg)] border-t border-transparent group-hover:border-[var(--border)] transition-colors">
-              <h3 className="text-lg font-bold font-sans text-[var(--fg)] mb-2 group-hover:text-blue-500 transition-colors">{proj.title}</h3>
+            <div className="p-6 flex flex-col flex-1 bg-[var(--bg-secondary)] border-t border-transparent group-hover:border-[var(--accent)]/50 transition-colors">
+              <h3 className="text-lg font-bold font-sans text-[var(--fg)] mb-2 group-hover:text-[var(--accent)] transition-colors">{proj.title}</h3>
               <p className="text-[var(--muted)] font-sans text-sm leading-relaxed mb-6 flex-1">{proj.description}</p>
               <div className="flex flex-wrap gap-2">
                 {proj.tech.map((tag) => (
@@ -441,7 +441,7 @@ export function BeyondCodingSection() {
           <motion.div
             key={item.title}
             whileHover={{ y: -4 }}
-            className="bg-[var(--bg)] border border-[var(--border)] rounded-2xl p-7 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)] transition-all"
+            className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-2xl p-7 hover:border-[var(--accent)]/50 hover:shadow-[0_8px_30px_rgba(230,57,70,0.06)] transition-all"
           >
             <p className="font-bold text-[var(--fg)] text-lg font-sans mb-2">{item.title}</p>
             <p className="text-[var(--muted)] font-mono text-xs tracking-wide">{item.level}</p>
@@ -456,7 +456,7 @@ export function BeyondCodingSection() {
 
 export function Footer() {
   return (
-    <footer className="w-full bg-[var(--fg)] text-[var(--bg)] py-10 text-center font-mono text-xs uppercase tracking-[0.2em]">
+    <footer className="w-full bg-[var(--bg-secondary)] text-[var(--muted)] border-t border-[var(--border)] py-10 text-center font-mono text-xs uppercase tracking-[0.2em]">
       <p>&copy; {new Date().getFullYear()} Gayatri Swami — Built with Next.js &amp; Framer Motion.</p>
     </footer>
   );

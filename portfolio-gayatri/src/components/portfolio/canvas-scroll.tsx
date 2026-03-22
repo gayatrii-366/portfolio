@@ -38,7 +38,7 @@ export default function CanvasScroll() {
       const isDark = document.documentElement.classList.contains("dark");
 
       // Adaptive background
-      ctx.fillStyle = isDark ? "#0a0a0a" : "#fdfdfd";
+      ctx.fillStyle = "#0b0b0b";
       ctx.fillRect(0, 0, width, height);
 
       const centerX = width / 2;
@@ -62,9 +62,7 @@ export default function CanvasScroll() {
         ctx.beginPath();
         ctx.moveTo(0, 0);
         ctx.lineTo(x, y);
-        ctx.strokeStyle = isDark
-          ? `rgba(255,255,255,${0.06 - progress * 0.02})`
-          : `rgba(0,0,0,${0.08 - progress * 0.03})`;
+        ctx.strokeStyle = `rgba(230,57,70,${0.2 - progress * 0.05})`; // Accent color (#E63946)
         ctx.lineWidth = 1;
         ctx.stroke();
 
@@ -72,9 +70,7 @@ export default function CanvasScroll() {
         ctx.beginPath();
         const nodeSize = 1.5 + Math.sin(i + progress * 15) * 1.2;
         ctx.arc(x, y, nodeSize, 0, Math.PI * 2);
-        ctx.fillStyle = isDark
-          ? `rgba(255,255,255,${0.35 + progress * 0.4})`
-          : `rgba(0,0,0,${0.3 + progress * 0.4})`;
+        ctx.fillStyle = `rgba(230,57,70,${0.4 + progress * 0.4})`;
         ctx.fill();
 
         // Connect adjacent nodes
@@ -86,7 +82,7 @@ export default function CanvasScroll() {
           ctx.beginPath();
           ctx.moveTo(x, y);
           ctx.lineTo(px, py);
-          ctx.strokeStyle = isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.08)";
+          ctx.strokeStyle = "rgba(230,57,70,0.15)";
           ctx.stroke();
         }
       }
