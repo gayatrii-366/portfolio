@@ -4,6 +4,7 @@ import {
   ProjectsSection,
   EducationSection,
   ExperienceSection,
+  WorkshopsSection,
   VolunteeringSection,
   BeyondCodingSection,
   Footer,
@@ -35,6 +36,7 @@ export default function Portfolio() {
         <ProjectsSection />
         <EducationSection />
         <ExperienceSection />
+        <WorkshopsSection />
         <VolunteeringSection />
         <BeyondCodingSection />
         <div className="w-full flex justify-center py-12">

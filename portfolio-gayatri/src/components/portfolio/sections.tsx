@@ -3,7 +3,7 @@
 import { useRef, ReactNode } from "react";
 import Image from "next/image";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { ExternalLink, Github, GraduationCap, Briefcase, Heart, Palette } from "lucide-react";
+import { ExternalLink, Github, GraduationCap, Briefcase, Heart, Palette, BookOpen } from "lucide-react";
 
 // ─── Types ────────────────────────────────────────────────────
 export interface Project {
@@ -54,9 +54,12 @@ export function RevealSection({ children, id, className = "" }: { children: Reac
 
 function SectionHeading({ children }: { children: ReactNode }) {
   return (
-    <h2 className="text-3xl lg:text-5xl font-sans font-bold mb-14 text-[var(--fg)] tracking-tight">
-      {children}
-    </h2>
+    <div className="relative inline-block mb-14">
+      <h2 className="text-3xl lg:text-5xl font-sans font-bold text-[var(--fg)] tracking-tight relative z-10">
+        {children}
+      </h2>
+      <div className="absolute -bottom-2 -left-2 w-full h-3 bg-[var(--accent)]/20 -rotate-1 z-0 rounded"></div>
+    </div>
   );
 }
 
@@ -172,7 +175,7 @@ const PROJECTS: Project[] = [
     title: "Fitz.ai",
     description: "AI-based fashion assistant that analyses skin tone and body structure to suggest suitable outfits. Aggregates insights from multiple e-commerce sources to deliver personalised recommendations.",
     tech: ["Python", "ML Models", "API Integration", "FastAPI"],
-    github: "#",
+    github: "https://github.com/gayatrii-366/Fitz.ai",
     live: "",
     image: "/fitzai.jpg",
   },
@@ -180,7 +183,7 @@ const PROJECTS: Project[] = [
     title: "BeatsWeb Player",
     description: "Web music player built to explore frontend systems and API integration. Uses Spotify API for dynamic music control within a responsive UI.",
     tech: ["JavaScript", "Spotify API", "HTML/CSS"],
-    github: "#",
+    github: "https://github.com/gayatrii-366/Beats--web-player",
     live: "",
     image: "/beatsweb.jpg",
   },
@@ -188,7 +191,7 @@ const PROJECTS: Project[] = [
     title: "Air Draw",
     description: "Computer vision-based system that enables mid-air drawing using finger tracking. Includes neon stroke rendering, gesture controls, and FPS tracking for smooth interaction.",
     tech: ["Python", "OpenCV", "NumPy"],
-    github: "#",
+    github: "https://github.com/gayatrii-366/air-draw",
     live: "",
     image: "/airdraw.jpg",
   },
@@ -196,7 +199,7 @@ const PROJECTS: Project[] = [
     title: "Study Timer",
     description: "Productivity tool implementing the Pomodoro technique to track focused sessions and improve time management.",
     tech: ["Python", "Tkinter"],
-    github: "#",
+    github: "https://github.com/gayatrii-366/student-timer",
     live: "",
     image: "/timer.jpg",
   },
@@ -204,7 +207,7 @@ const PROJECTS: Project[] = [
     title: "Snake Game",
     description: "Classic snake game built purely with Python standard libraries, focusing on game logic, controls, and rendering.",
     tech: ["Python", "Pygame"],
-    github: "#",
+    github: "https://github.com/gayatrii-366/RetroSnakaeFX",
     live: "",
     image: "/snakegame.jpg",
   },
@@ -212,18 +215,9 @@ const PROJECTS: Project[] = [
     title: "Tic Tac Toe",
     description: "Interactive browser-based game with clean game state handling, written using vanilla HTML, CSS, and JavaScript.",
     tech: ["HTML", "CSS", "JavaScript"],
-    github: "#",
+    github: "https://github.com/gayatrii-366/Tic-Tac-Toe",
     live: "",
     image: "/tictactoe.jpg",
-  },
-  {
-    title: "Underwater Debris Detection",
-    description: "Ongoing — Underwater trash and debris detection pipeline using deep learning for environmental monitoring.",
-    tech: ["Python", "YOLOv8", "OpenCV", "Deep Learning"],
-    github: "#",
-    live: "",
-    image: "/underwater.jpeg",
-    ongoing: true,
   },
 ];
 
@@ -236,8 +230,8 @@ export function ProjectsSection() {
         {PROJECTS.map((proj, i) => (
           <motion.div
             key={i}
-            whileHover={{ y: -6 }}
-            className="group relative bg-[var(--bg-secondary)] border border-[var(--border)] rounded-2xl overflow-hidden flex flex-col hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(230,57,70,0.1)] transition-all duration-300"
+            whileHover={{ y: -8 }}
+            className="group relative bg-[var(--bg-secondary)] border border-[var(--border)] rounded-2xl overflow-hidden flex flex-col hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(230,57,70,0.15)] transition-all duration-500"
           >
             {/* Image thumbnail with hover overlay */}
             {proj.image && (
@@ -250,7 +244,7 @@ export function ProjectsSection() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 {/* Dark scrim + links on hover */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all duration-500 flex flex-col items-center justify-center gap-3">
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-gradient-to-t group-hover:from-[var(--accent)]/30 group-hover:to-black/80 transition-all duration-500 flex flex-col items-center justify-center gap-3">
                   <div className="flex gap-4">
                     {proj.github && proj.github !== "#" && (
                       <a
@@ -258,7 +252,7 @@ export function ProjectsSection() {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100 bg-[var(--accent)] text-white p-3 rounded-full hover:scale-110 hover:bg-[var(--accent-hover)] flex items-center justify-center shadow-2xl interactive"
+                        className="translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100 bg-[var(--accent)] text-white p-3 rounded-full hover:scale-110 hover:bg-[var(--accent-hover)] hover:shadow-[0_0_20px_var(--accent)] flex items-center justify-center shadow-2xl interactive"
                       >
                         <Github className="w-5 h-5" />
                       </a>
@@ -269,14 +263,14 @@ export function ProjectsSection() {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-150 bg-[var(--accent)] text-white p-3 rounded-full hover:scale-110 hover:bg-[var(--accent-hover)] flex items-center justify-center shadow-2xl interactive"
+                        className="translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-150 bg-[var(--accent)] text-white p-3 rounded-full hover:scale-110 hover:bg-[var(--accent-hover)] hover:shadow-[0_0_20px_var(--accent)] flex items-center justify-center shadow-2xl interactive"
                       >
                         <ExternalLink className="w-5 h-5" />
                       </a>
                     )}
                   </div>
-                  <span className="text-white/80 font-mono text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
-                    View Project
+                  <span className="text-white/90 font-mono text-[11px] uppercase tracking-[0.3em] font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200 drop-shadow-md">
+                    View Code
                   </span>
                 </div>
                 {/* Ongoing badge */}
@@ -368,9 +362,53 @@ export function ExperienceSection() {
           R&D Intern · Jun – Aug 2025
         </p>
         <p className="text-[var(--muted)] font-sans text-sm leading-relaxed">
-          Worked on applied AI/ML research and experimentation within the institute's research division.
-          Contributed to model development, data pipelines, and experiment documentation.
+          Worked on applied <span className="text-[var(--accent)] font-medium">AI/ML research</span> and experimentation within the institute's research division.
+          Contributed to <span className="text-[var(--accent)] font-medium">model development</span>, data pipelines, and experiment documentation.
         </p>
+      </div>
+    </RevealSection>
+  );
+}
+
+// ─── Workshops ────────────────────────────────────────────────
+
+const WORKSHOPS = [
+  {
+    title: "Master in Machine Learning Workshop",
+    description: "Focused on understanding core ML concepts, model building, and practical applications in real-world scenarios.",
+  },
+  {
+    title: "OpenCV Workshop",
+    description: "Explored computer vision techniques including image processing, object detection, and real-time visual analysis.",
+  },
+  {
+    title: "AWS Workshop",
+    description: "Learned fundamentals of cloud computing, deployment basics, and working with scalable infrastructure using AWS.",
+  }
+];
+
+export function WorkshopsSection() {
+  return (
+    <RevealSection id="workshops" className="bg-[var(--bg-secondary)]">
+      <ParallaxText text="Skills" speed={1.2} />
+      <div className="flex items-center gap-3 mb-14">
+        <BookOpen className="w-7 h-7 text-[var(--muted)]" />
+        <SectionHeading>Workshops</SectionHeading>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {WORKSHOPS.map((ws, i) => (
+          <motion.div
+            key={i}
+            whileHover={{ y: -6, scale: 1.02 }}
+            className="group relative bg-[var(--bg)] border border-[var(--border)] rounded-2xl p-6 hover:border-[var(--accent)]/50 hover:shadow-[0_12px_35px_rgba(230,57,70,0.12)] transition-all duration-300 overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative z-10">
+              <h3 className="text-lg font-bold font-sans text-[var(--fg)] mb-3 group-hover:text-[var(--accent)] transition-colors">{ws.title}</h3>
+              <p className="text-[var(--muted)] font-sans text-sm leading-relaxed">{ws.description}</p>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </RevealSection>
   );
@@ -424,6 +462,7 @@ export function VolunteeringSection() {
 // ─── Beyond Coding ────────────────────────────────────────────
 
 const BEYOND = [
+  { title: "Bharatanatyam", level: "3 years of training" },
   { title: "Calligraphy", level: "Elementary & Intermediate (A+ grades)" },
   { title: "Lettering", level: "Elementary & Intermediate (A+ grades)" },
 ];
@@ -441,10 +480,13 @@ export function BeyondCodingSection() {
           <motion.div
             key={item.title}
             whileHover={{ y: -4 }}
-            className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-2xl p-7 hover:border-[var(--accent)]/50 hover:shadow-[0_8px_30px_rgba(230,57,70,0.06)] transition-all"
+            className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-2xl p-7 hover:border-[var(--accent)]/50 hover:shadow-[0_12px_35px_rgba(230,57,70,0.12)] transition-all relative overflow-hidden group"
           >
-            <p className="font-bold text-[var(--fg)] text-lg font-sans mb-2">{item.title}</p>
-            <p className="text-[var(--muted)] font-mono text-xs tracking-wide">{item.level}</p>
+            <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative z-10">
+              <p className="font-bold text-[var(--fg)] text-lg font-sans mb-2 group-hover:text-[var(--accent)] transition-colors">{item.title}</p>
+              <p className="text-[var(--muted)] font-mono text-xs tracking-wide">{item.level}</p>
+            </div>
           </motion.div>
         ))}
       </div>
