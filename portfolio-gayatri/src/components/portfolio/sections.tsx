@@ -140,15 +140,27 @@ function SkillPill({ name, color, setHoveredSkill }: { name: string; color: stri
 const QUOTES: Record<string, string> = {
   "Python": "Python is my canvas for AI. It's where the logic meets the magic.",
   "C++": "When I need absolute control and speed, C++ is my structural foundation.",
+  "C": "The raw roots of computing. It taught me how memory and hardware actually talk.",
   "OpenCV": "Making the computer 'see' the world. It’s exactly how I blend my art and tech.",
   "ML Models": "Training models feels like choreographing a dance—it takes patience, iteration, and precise movements.",
   "FastAPI": "Building high-speed, invisible bridges between my models and the user.",
+  "Django": "Heavy-duty architecture for when I need everything securely packed into one powerhouse.",
   "Docker": "Because 'It works on my machine' is not something you want to say in production.",
   "DSA": "The invisible architecture behind every responsive and efficient application.",
+  "OOPs": "Thinking in objects. It’s how I organize the chaos of complex systems into neat, real-world models.",
+  "DBMS": "The art of organizing, storing, and instantly retrieving knowledge without breaking a sweat.",
+  "OS": "Understanding the beating heart that schedules, prioritizes, and manages the entire show.",
+  "CN": "The invisible web tying the entire digital world together.",
+  "MySQL": "Classic, reliable, and powerful data storage.",
+  "Scikit-learn": "Where theory becomes practice. My go-to toolkit for robust, quick machine learning.",
+  "Authentication": "Guarding the doors and building the trust of the system.",
+  "Netlify": "From local code to the live internet in seconds flat.",
   "API Integration": "Connecting the dots between isolated systems to create something alive.",
   "Git": "My personal time-machine.",
+  "GitHub": "Where my code goes to socialize and collaborate.",
   "Java": "The backbone of object-oriented discipline.",
   "Pandas": "Turning raw chaos into structured stories.",
+  "NumPy": "The beautiful, brutal math that powers everything I build in AI."
 };
 
 const DEFAULT_QUOTE = "Hover over a skill on the left to see what it means to me. I believe in blending logical structure with creative expression.";
@@ -237,7 +249,7 @@ export function SkillsSection() {
           ))}
         </div>
 
-        <div className="lg:sticky lg:top-32 w-full order-last mt-10 lg:mt-0">
+        <div className="lg:sticky lg:top-32 self-start w-full order-last mt-10 lg:mt-0">
           <CuriosityTerminal hoveredSkill={hoveredSkill} />
         </div>
       </div>
@@ -541,9 +553,26 @@ export function VolunteeringSection() {
 // ─── Beyond Coding ────────────────────────────────────────────
 
 const BEYOND = [
-  { title: "Bharatanatyam", level: "3 years of training" },
-  { title: "Calligraphy", level: "Elementary & Intermediate (A+ grades)" },
-  { title: "Lettering", level: "Elementary & Intermediate (A+ grades)" },
+  { 
+    title: "Bharatanatyam", 
+    level: "3 years of training", 
+    description: "Training in classical Indian dance has taught me rhythm, extreme discipline, and expressive storytelling through precise movement." 
+  },
+  { 
+    title: "Calligraphy & Lettering", 
+    level: "Elementary & Intermediate (A+ grades)", 
+    description: "Exploring structure, spacing, and elegance in written forms. It deeply influences my UI/UX and aesthetic perspective." 
+  },
+  { 
+    title: "Still Life Drawing", 
+    level: "Observation & Art", 
+    description: "Studying light, texture, and observation. It forces me to pause and see the world exactly as it is without assumptions." 
+  },
+  { 
+    title: "Mentorship & Community", 
+    level: "Peer learning", 
+    description: "Sharing knowledge is the best way to solidify it. I genuinely love guiding others through their tech journey." 
+  },
 ];
 
 export function BeyondCodingSection() {
@@ -564,8 +593,9 @@ export function BeyondCodingSection() {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="relative z-10">
-              <p className="font-bold text-[var(--fg)] text-lg font-sans mb-2 group-hover:text-[var(--accent)] transition-colors">{item.title}</p>
-              <p className="text-[var(--muted)] font-mono text-xs tracking-wide">{item.level}</p>
+              <p className="font-bold text-[var(--fg)] text-lg font-sans mb-1 group-hover:text-[var(--accent)] transition-colors">{item.title}</p>
+              <p className="text-[var(--muted)] font-mono text-[10px] uppercase tracking-[0.2em] mb-3">{item.level}</p>
+              <p className="text-[var(--muted)] font-sans text-sm leading-relaxed opacity-90">{item.description}</p>
             </div>
           </motion.div>
         ))}
