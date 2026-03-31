@@ -45,15 +45,27 @@ export default function LeftPanel() {
         className="flex flex-col items-center text-center z-10 w-full max-w-sm"
       >
         {/* Profile Image */}
-        <div className="relative w-44 h-44 lg:w-56 lg:h-56 mb-6 group">
-          <Image
-            src="/profile.jpeg"
-            alt="Gayatri Swami"
-            fill
-            className="object-cover rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] transition-transform duration-500 group-hover:scale-[1.02]"
-            priority
-          />
-        </div>
+        <motion.div 
+          animate={{ y: [0, -12, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="relative w-44 h-44 lg:w-56 lg:h-56 mb-8 group cursor-pointer"
+        >
+          <motion.div
+            className="w-full h-full relative"
+            whileHover={{ scale: 1.05, rotate: [0, -4, 4, -2, 0] }}
+            transition={{ type: "spring", stiffness: 400, damping: 12 }}
+          >
+            <Image
+              src="/profile.jpeg"
+              alt="Gayatri Swami"
+              fill
+              className="object-cover rounded-[2rem] shadow-[0_20px_50px_rgba(230,57,70,0.15)] dark:shadow-[0_20px_50px_rgba(230,57,70,0.3)] transition-all duration-300"
+              priority
+            />
+            {/* Playful glow behind the image */}
+            <div className="absolute inset-0 rounded-[2rem] bg-[var(--accent)]/30 blur-2xl scale-110 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+          </motion.div>
+        </motion.div>
 
         {/* Dynamic Greeting */}
         <motion.p
@@ -78,13 +90,13 @@ export default function LeftPanel() {
         {/* Email Button + Dropdown */}
         <div className="relative w-full flex justify-center mb-10">
           <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={{ scale: 1.08, y: -4, rotate: -2 }}
+            whileTap={{ scale: 0.9 }}
             onClick={(e) => {
               e.stopPropagation();
               setShowEmailDropdown(!showEmailDropdown);
             }}
-            className="bg-[var(--accent)] text-white px-9 py-3.5 rounded-xl text-sm font-medium tracking-wide shadow-lg transition-all shadow-[var(--accent)]/10 hover:bg-[var(--accent-hover)] hover:shadow-[var(--accent)]/20 interactive"
+            className="bg-[var(--accent)] text-white px-9 py-3.5 rounded-[1.25rem] text-sm font-medium tracking-wide shadow-[0_10px_30px_rgba(230,57,70,0.25)] hover:shadow-[0_15px_40px_rgba(230,57,70,0.4)] interactive"
           >
             Email me
           </motion.button>
@@ -143,9 +155,9 @@ export default function LeftPanel() {
               aria-label={label}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.15, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="opacity-75 hover:opacity-100 hover:text-[var(--accent)] transition-all duration-300 interactive"
+              whileHover={{ scale: 1.3, rotate: 12, y: -6 }}
+              whileTap={{ scale: 0.8 }}
+              className="opacity-75 hover:opacity-100 hover:text-[var(--accent)] drop-shadow-md transition-all interactive"
             >
               <Icon className="w-5 h-5 stroke-[1.5]" />
             </motion.a>

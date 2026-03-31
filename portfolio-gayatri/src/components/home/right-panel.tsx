@@ -81,24 +81,32 @@ export default function RightPanel() {
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.5, ease: "easeOut" }}
+          transition={{ duration: 0.6, delay: 1.5, type: "spring", bounce: 0.5 }}
           className="flex flex-row gap-4 w-full"
         >
-          <a
+          <motion.a
+            whileHover={{ scale: 1.05, y: -4, rotate: 1 }}
+            whileTap={{ scale: 0.9 }}
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 bg-[var(--accent)] text-white rounded-xl py-4 flex items-center justify-center font-sans font-medium tracking-wide hover:-translate-y-1 hover:bg-[var(--accent-hover)] hover:shadow-lg hover:shadow-[var(--accent)]/20 transition-all duration-300 ease-out interactive"
+            className="flex-1 bg-[var(--accent)] text-white rounded-xl py-4 flex items-center justify-center font-sans font-medium tracking-wide shadow-[0_10px_30px_rgba(230,57,70,0.25)] hover:bg-[var(--accent-hover)] hover:shadow-[0_15px_40px_rgba(230,57,70,0.4)] interactive"
           >
             Resume
-          </a>
+          </motion.a>
 
-          <Link
-            href="/portfolio"
-            className="flex-1 bg-transparent text-[var(--fg)] border border-[var(--border)] rounded-xl py-4 flex items-center justify-center font-sans font-medium tracking-wide hover:bg-[var(--accent)] hover:text-white hover:border-[var(--accent)] hover:-translate-y-1 transition-all duration-300 ease-out interactive"
+          <motion.div
+            whileHover={{ scale: 1.05, y: -4, rotate: -2 }}
+            whileTap={{ scale: 0.9 }}
+            className="flex-1 flex"
           >
-            Portfolio
-          </Link>
+            <Link
+              href="/portfolio"
+              className="w-full bg-transparent text-[var(--fg)] border border-[var(--border)] rounded-xl py-4 flex items-center justify-center font-sans font-medium tracking-wide hover:bg-[var(--accent)] hover:text-white hover:border-[var(--accent)] shadow-sm hover:shadow-[0_15px_40px_rgba(230,57,70,0.4)] interactive"
+            >
+              Portfolio
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
     </div>

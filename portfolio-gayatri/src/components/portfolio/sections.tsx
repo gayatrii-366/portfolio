@@ -110,8 +110,9 @@ function SkillPill({ name, color }: { name: string; color: string }) {
         hidden: { opacity: 0, y: 15 },
         show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 20 } }
       }}
-      whileHover={{ scale: 1.08, y: -3 }}
-      whileTap={{ scale: 0.96 }}
+      whileHover={{ scale: 1.15, y: -5, rotate: Math.random() > 0.5 ? 2 : -2 }}
+      whileTap={{ scale: 0.9 }}
+      transition={{ type: "spring", stiffness: 400, damping: 12 }}
       className="group relative flex items-center justify-center px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] cursor-default select-none overflow-visible shadow-[0_2px_8px_rgba(0,0,0,0.04)] interactive"
     >
       {/* Tooltip */}
@@ -230,8 +231,9 @@ export function ProjectsSection() {
         {PROJECTS.map((proj, i) => (
           <motion.div
             key={i}
-            whileHover={{ y: -8 }}
-            className="group relative bg-[var(--bg-secondary)] border border-[var(--border)] rounded-2xl overflow-hidden flex flex-col hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(230,57,70,0.15)] transition-all duration-500"
+            whileHover={{ y: -10, scale: 1.02, rotate: i % 2 === 0 ? 1 : -1 }}
+            transition={{ type: "spring", stiffness: 300, damping: 15 }}
+            className="group relative bg-[var(--bg-secondary)] border border-[var(--border)] rounded-2xl overflow-hidden flex flex-col hover:shadow-[0_20px_50px_rgba(230,57,70,0.25)] transition-shadow duration-500"
           >
             {/* Image thumbnail with hover overlay */}
             {proj.image && (
@@ -399,8 +401,9 @@ export function WorkshopsSection() {
         {WORKSHOPS.map((ws, i) => (
           <motion.div
             key={i}
-            whileHover={{ y: -6, scale: 1.02 }}
-            className="group relative bg-[var(--bg)] border border-[var(--border)] rounded-2xl p-6 hover:border-[var(--accent)]/50 hover:shadow-[0_12px_35px_rgba(230,57,70,0.12)] transition-all duration-300 overflow-hidden"
+            whileHover={{ y: -8, scale: 1.03, rotate: i % 2 === 0 ? -1 : 1 }}
+            transition={{ type: "spring", stiffness: 300, damping: 15 }}
+            className="group relative bg-[var(--bg)] border border-[var(--border)] rounded-2xl p-6 hover:border-[var(--accent)]/50 hover:shadow-[0_15px_40px_rgba(230,57,70,0.2)] transition-shadow duration-300 overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="relative z-10">
@@ -476,11 +479,12 @@ export function BeyondCodingSection() {
         <SectionHeading>Beyond Coding</SectionHeading>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl">
-        {BEYOND.map((item) => (
+        {BEYOND.map((item, i) => (
           <motion.div
             key={item.title}
-            whileHover={{ y: -4 }}
-            className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-2xl p-7 hover:border-[var(--accent)]/50 hover:shadow-[0_12px_35px_rgba(230,57,70,0.12)] transition-all relative overflow-hidden group"
+            whileHover={{ y: -6, scale: 1.04, rotate: i % 2 === 0 ? 1.5 : -1.5 }}
+            transition={{ type: "spring", stiffness: 300, damping: 15 }}
+            className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-2xl p-7 hover:border-[var(--accent)]/50 hover:shadow-[0_15px_40px_rgba(230,57,70,0.2)] transition-shadow relative overflow-hidden group"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="relative z-10">
