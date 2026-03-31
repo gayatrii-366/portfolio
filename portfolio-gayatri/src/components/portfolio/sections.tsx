@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, ReactNode } from "react";
+import { useRef, ReactNode, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { ExternalLink, Github, GraduationCap, Briefcase, Heart, Palette, BookOpen } from "lucide-react";
@@ -103,7 +103,7 @@ const SKILLS: { category: string; color: string; items: string[] }[] = [
   },
 ];
 
-function SkillPill({ name, color }: { name: string; color: string }) {
+function SkillPill({ name, color, setHoveredSkill }: { name: string; color: string; setHoveredSkill: (name: string | null) => void }) {
   return (
     <motion.div
       variants={{
@@ -112,6 +112,8 @@ function SkillPill({ name, color }: { name: string; color: string }) {
       }}
       whileHover={{ scale: 1.15, y: -5, rotate: Math.random() > 0.5 ? 2 : -2 }}
       whileTap={{ scale: 0.9 }}
+      onHoverStart={() => setHoveredSkill(name)}
+      onHoverEnd={() => setHoveredSkill(null)}
       transition={{ type: "spring", stiffness: 400, damping: 12 }}
       className="group relative flex items-center justify-center px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] cursor-default select-none overflow-visible shadow-[0_2px_8px_rgba(0,0,0,0.04)] interactive"
     >
@@ -135,35 +137,109 @@ function SkillPill({ name, color }: { name: string; color: string }) {
   );
 }
 
+const QUOTES: Record<string, string> = {
+  "Python": "Python is my canvas for AI. It's where the logic meets the magic.",
+  "C++": "When I need absolute control and speed, C++ is my structural foundation.",
+  "OpenCV": "Making the computer 'see' the world. It’s exactly how I blend my art and tech.",
+  "ML Models": "Training models feels like choreographing a dance—it takes patience, iteration, and precise movements.",
+  "FastAPI": "Building high-speed, invisible bridges between my models and the user.",
+  "Docker": "Because 'It works on my machine' is not something you want to say in production.",
+  "DSA": "The invisible architecture behind every responsive and efficient application.",
+  "API Integration": "Connecting the dots between isolated systems to create something alive.",
+  "Git": "My personal time-machine.",
+  "Java": "The backbone of object-oriented discipline.",
+  "Pandas": "Turning raw chaos into structured stories.",
+};
+
+const DEFAULT_QUOTE = "Hover over a skill on the left to see what it means to me. I believe in blending logical structure with creative expression.";
+
+function CuriosityTerminal({ hoveredSkill }: { hoveredSkill: string | null }) {
+  const text = hoveredSkill 
+    ? (QUOTES[hoveredSkill] || `Exploring the depths of ${hoveredSkill} to build smarter solutions.`)
+    : DEFAULT_QUOTE;
+
+  return (
+    <div className="w-full h-full min-h-[300px] lg:min-h-[400px] rounded-3xl border border-[var(--border)] bg-[var(--bg-secondary)]/30 backdrop-blur-xl p-8 relative flex flex-col justify-center items-center overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] group">
+      {/* Glow behind */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/10 to-transparent opacity-50" />
+      
+      {/* Mac window dots */}
+      <div className="absolute top-6 left-6 flex gap-2">
+        <div className="w-3 h-3 rounded-full bg-red-500/80" />
+        <div className="w-3 h-3 rounded-full bg-amber-500/80" />
+        <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
+      </div>
+
+      {/* Terminal Content */}
+      <div className="relative z-10 w-full max-w-sm mt-8">
+        <h4 className="font-mono text-[var(--accent)] text-xs uppercase tracking-widest mb-4">
+          ~/{hoveredSkill ? hoveredSkill.toLowerCase().replace(/ /g, '-') : "journal"}
+        </h4>
+        <div className="min-h-[120px]">
+          <motion.p
+            key={hoveredSkill || "default"}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "backOut" }}
+            className="font-mono text-sm leading-relaxed text-[var(--fg)]"
+          >
+            <span className="text-[var(--muted)] opacity-50 mr-2">&gt;</span> 
+            {text}
+            <motion.span
+               animate={{ opacity: [1, 0, 1] }}
+               transition={{ duration: 0.8, repeat: Infinity, ease: 'linear' }}
+               className="inline-block ml-1 w-2 h-4 bg-[var(--accent)] align-middle"
+            />
+          </motion.p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function SkillsSection() {
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+
   return (
     <RevealSection id="skills">
       <ParallaxText text="Capabilities" speed={1.4} />
       <SectionHeading>Technical Skills</SectionHeading>
-      <div className="space-y-12">
-        {SKILLS.map((cat) => (
-          <motion.div 
-            key={cat.category}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={{
-              show: { transition: { staggerChildren: 0.05 } }
-            }}
-          >
-            <p
-              className="font-mono text-xs uppercase tracking-[0.2em] mb-5 font-semibold"
-              style={{ color: cat.color }}
+      
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div className="space-y-12">
+          {SKILLS.map((cat) => (
+            <motion.div 
+              key={cat.category}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={{
+                show: { transition: { staggerChildren: 0.05 } }
+              }}
             >
-              {cat.category}
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {cat.items.map((item) => (
-                <SkillPill key={item} name={item} color={cat.color} />
-              ))}
-            </div>
-          </motion.div>
-        ))}
+              <p
+                className="font-mono text-xs uppercase tracking-[0.2em] mb-5 font-semibold"
+                style={{ color: cat.color }}
+              >
+                {cat.category}
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {cat.items.map((item) => (
+                  <SkillPill 
+                    key={item} 
+                    name={item} 
+                    color={cat.color} 
+                    setHoveredSkill={setHoveredSkill} 
+                  />
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="lg:sticky lg:top-32 w-full order-last mt-10 lg:mt-0">
+          <CuriosityTerminal hoveredSkill={hoveredSkill} />
+        </div>
       </div>
     </RevealSection>
   );
